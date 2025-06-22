@@ -1,0 +1,14 @@
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\bin\Debug\ProjetoVendas.exe.config
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\bin\Debug\ProjetoVendas.exe
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\bin\Debug\ProjetoVendas.pdb
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\obj\Debug\ProjetoVendas.csproj.AssemblyReference.cache
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\obj\Debug\ProjetoVendas.br.com.projeto.view.FrmClientes.resources
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\obj\Debug\ProjetoVendas.Properties.Resources.resources
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\obj\Debug\ProjetoVendas.csproj.GenerateResource.cache
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\obj\Debug\ProjetoVendas.csproj.CoreCompileInputs.cache
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\obj\Debug\ProjetoVendas.exe
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\obj\Debug\ProjetoVendas.pdb
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\obj\Debug\ProjetoVendas.exe.config
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Morelle Jr\Documents\GitHub\Projetos\ProjetoVendas\ProjetoVendas\obj\Debug\ProjetoV.92970842.Up2Date
