@@ -1,12 +1,70 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Morelle Jr\\Documents\\GitHub\\Projetos\\ProjetoVendas\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Morelle\\Documents\\GitHub\\ProjetoVendas\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{72F514F5-FC69-4A27-A420-D7AE58762DB1}|ProjetoVendas\\ProjetoVendas.csproj|c:\\users\\morelle\\documents\\github\\projetovendas\\projetovendas\\br.com.projeto.view\\frmclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72F514F5-FC69-4A27-A420-D7AE58762DB1}|ProjetoVendas\\ProjetoVendas.csproj|solutionrelative:projetovendas\\br.com.projeto.view\\frmclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72F514F5-FC69-4A27-A420-D7AE58762DB1}|ProjetoVendas\\ProjetoVendas.csproj|c:\\users\\morelle\\documents\\github\\projetovendas\\projetovendas\\br.com.projeto.dao\\clientedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72F514F5-FC69-4A27-A420-D7AE58762DB1}|ProjetoVendas\\ProjetoVendas.csproj|solutionrelative:projetovendas\\br.com.projeto.dao\\clientedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72F514F5-FC69-4A27-A420-D7AE58762DB1}|ProjetoVendas\\ProjetoVendas.csproj|c:\\users\\morelle\\documents\\github\\projetovendas\\projetovendas\\br.com.projeto.view\\frmclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{72F514F5-FC69-4A27-A420-D7AE58762DB1}|ProjetoVendas\\ProjetoVendas.csproj|solutionrelative:projetovendas\\br.com.projeto.view\\frmclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClienteDAO.cs",
+              "DocumentMoniker": "C:\\Users\\Morelle\\Documents\\GitHub\\ProjetoVendas\\ProjetoVendas\\br.com.projeto.dao\\ClienteDAO.cs",
+              "RelativeDocumentMoniker": "ProjetoVendas\\br.com.projeto.dao\\ClienteDAO.cs",
+              "ToolTip": "C:\\Users\\Morelle\\Documents\\GitHub\\ProjetoVendas\\ProjetoVendas\\br.com.projeto.dao\\ClienteDAO.cs",
+              "RelativeToolTip": "ProjetoVendas\\br.com.projeto.dao\\ClienteDAO.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAtwEYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T16:44:43.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmClientes.cs",
+              "DocumentMoniker": "C:\\Users\\Morelle\\Documents\\GitHub\\ProjetoVendas\\ProjetoVendas\\br.com.projeto.view\\FrmClientes.cs",
+              "RelativeDocumentMoniker": "ProjetoVendas\\br.com.projeto.view\\FrmClientes.cs",
+              "ToolTip": "C:\\Users\\Morelle\\Documents\\GitHub\\ProjetoVendas\\ProjetoVendas\\br.com.projeto.view\\FrmClientes.cs",
+              "RelativeToolTip": "ProjetoVendas\\br.com.projeto.view\\FrmClientes.cs",
+              "ViewState": "AgIAACMBAAAAAAAAAAAtwDEBAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T16:30:44.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmClientes.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Morelle\\Documents\\GitHub\\ProjetoVendas\\ProjetoVendas\\br.com.projeto.view\\FrmClientes.cs",
+              "RelativeDocumentMoniker": "ProjetoVendas\\br.com.projeto.view\\FrmClientes.cs",
+              "ToolTip": "C:\\Users\\Morelle\\Documents\\GitHub\\ProjetoVendas\\ProjetoVendas\\br.com.projeto.view\\FrmClientes.cs [Design]",
+              "RelativeToolTip": "ProjetoVendas\\br.com.projeto.view\\FrmClientes.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T16:30:39.397Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

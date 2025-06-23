@@ -24,4 +24,15 @@ namespace ProjetoVendas.br.com.projeto.model
         public string Cidade { get; set; }
         public string Estado { get; set; }
     }
+
+    public class ClienteResumo
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string CpfCnpj { get; set; }
+        public string Telefone { get; set; }
+        public string Celular { get; set; }
+        public string Cidade { get; set; }
+        public string Endereco { get; set; }
+    }
 }

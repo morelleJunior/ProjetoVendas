@@ -92,7 +92,16 @@ namespace ProjetoVendas.br.com.projeto.view
         {
             tabelaCliente.DefaultCellStyle.ForeColor = Color.Black;
             ClienteDAO dao = new ClienteDAO();
-            tabelaCliente.DataSource = dao.ListarCliente();
+            var clientes = dao.ListarCliente();
+            tabelaCliente.DataSource = clientes;
+
+            tabelaCliente.Columns["Id"].HeaderText = "Código";
+            tabelaCliente.Columns["Nome"].HeaderText = "Nome";
+            tabelaCliente.Columns["CpfCnpj"].HeaderText = "CPF / CNPJ";
+            tabelaCliente.Columns["Telefone"].HeaderText = "Telefone";
+            tabelaCliente.Columns["Celular"].HeaderText = "Celular";
+            tabelaCliente.Columns["Endereco"].HeaderText = "Endereço";
+            tabelaCliente.Columns["Cidade"].HeaderText = "Cidade";
         }
 
         private void label3_Click_1(object sender, EventArgs e)
@@ -211,6 +220,7 @@ namespace ProjetoVendas.br.com.projeto.view
             Cliente obj = new Cliente();
 
             obj.Nome = txtNome.Text;
+            obj.Rg = "";
             obj.CpfCnpj = mtbCpfCnpj.Text;
             obj.Email = txtEmail.Text;
             obj.Telefone = txtTelefone.Text;
@@ -227,15 +237,12 @@ namespace ProjetoVendas.br.com.projeto.view
             ClienteDAO dao = new ClienteDAO();
             dao.cadastrarCliente(obj);
 
-            tabelaCliente.DataSource = dao.ListarCliente();
-
             Helppers.LimparCampos(this);
             txtNome.Focus();
         }
 
         private void tabelaCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void btPesquisarCliente_Click(object sender, EventArgs e)
@@ -249,26 +256,23 @@ namespace ProjetoVendas.br.com.projeto.view
 
             try
             {
-                Cliente obj = new Cliente();
-                obj.Id = int.Parse(txtCodigo.Text); 
-
                 ClienteDAO dao = new ClienteDAO();
-                DataTable dt = dao.ClienteId(obj);
+                Cliente cliente = dao.ClienteId(id);
 
-                if (dt.Rows.Count > 0)
+                if (cliente != null)
                 {
-                    txtNome.Text = dt.Rows[0]["nome"].ToString();
-                    mtbCpfCnpj.Text = dt.Rows[0]["cpf"].ToString();
-                    txtEmail.Text = dt.Rows[0]["email"].ToString();
-                    txtTelefone.Text = dt.Rows[0]["telefone"].ToString();
-                    txtCelular.Text = dt.Rows[0]["celular"].ToString();
-                    txtCep.Text = dt.Rows[0]["cep"].ToString();
-                    txtEndereco.Text = dt.Rows[0]["endereco"].ToString();
-                    txtNumero.Text = dt.Rows[0]["numero"].ToString();
-                    txtComplemento.Text = dt.Rows[0]["complemento"].ToString();
-                    txtBairro.Text = dt.Rows[0]["bairro"].ToString();
-                    txtCidade.Text = dt.Rows[0]["cidade"].ToString();
-                    cbUf.Text = dt.Rows[0]["estado"].ToString();
+                    txtNome.Text = cliente.Nome;
+                    mtbCpfCnpj.Text = cliente.CpfCnpj;
+                    txtEmail.Text = cliente.Email;
+                    txtTelefone.Text = cliente.Telefone;
+                    txtCelular.Text = cliente.Celular;
+                    txtCep.Text = cliente.Cep;
+                    txtEndereco.Text = cliente.Endereco;
+                    txtNumero.Text = cliente.Numero;
+                    txtComplemento.Text = cliente.Complemento;
+                    txtBairro.Text = cliente.Bairro;
+                    txtCidade.Text = cliente.Cidade;
+                    cbUf.Text = cliente.Estado;
                 }
                 else
                 {
@@ -297,8 +301,12 @@ namespace ProjetoVendas.br.com.projeto.view
             ClienteDAO dao = new ClienteDAO();
 
             dao.ExcluirCliente(obj);
-            
-            tabelaCliente.DataSource = dao.ListarCliente();
+
+            var clientes = dao.ListarCliente();
+            tabelaCliente.DataSource = clientes;
+
+            Helppers.LimparCampos(this);
+            txtNome.Focus();
         }
 
         private void btPesquisar_Click(object sender, EventArgs e)
@@ -335,9 +343,14 @@ namespace ProjetoVendas.br.com.projeto.view
             }
 
             ClienteDAO dao = new ClienteDAO();
+
             dao.EditarCliente(obj);
 
-            tabelaCliente.DataSource = dao.ListarCliente();
+            var clientes = dao.ListarCliente();
+            tabelaCliente.DataSource = clientes;
+
+            Helppers.LimparCampos(this);
+            txtNome.Focus();
         }
 
         private void txtCodigo_Leave(object sender, EventArgs e)
@@ -350,26 +363,23 @@ namespace ProjetoVendas.br.com.projeto.view
 
             try
             {
-                Cliente obj = new Cliente();
-                obj.Id = int.Parse(txtCodigo.Text);
-
                 ClienteDAO dao = new ClienteDAO();
-                DataTable dt = dao.ClienteId(obj);
+                Cliente cliente = dao.ClienteId(id);
 
-                if (dt.Rows.Count > 0)
+                if (cliente != null)
                 {
-                    txtNome.Text = dt.Rows[0]["nome"].ToString();
-                    mtbCpfCnpj.Text = dt.Rows[0]["cpf"].ToString();
-                    txtEmail.Text = dt.Rows[0]["email"].ToString();
-                    txtTelefone.Text = dt.Rows[0]["telefone"].ToString();
-                    txtCelular.Text = dt.Rows[0]["celular"].ToString();
-                    txtCep.Text = dt.Rows[0]["cep"].ToString();
-                    txtEndereco.Text = dt.Rows[0]["endereco"].ToString();
-                    txtNumero.Text = dt.Rows[0]["numero"].ToString();
-                    txtComplemento.Text = dt.Rows[0]["complemento"].ToString();
-                    txtBairro.Text = dt.Rows[0]["bairro"].ToString();
-                    txtCidade.Text = dt.Rows[0]["cidade"].ToString();
-                    cbUf.Text = dt.Rows[0]["estado"].ToString();
+                    txtNome.Text = cliente.Nome;
+                    mtbCpfCnpj.Text = cliente.CpfCnpj;
+                    txtEmail.Text = cliente.Email;
+                    txtTelefone.Text = cliente.Telefone;
+                    txtCelular.Text = cliente.Celular;
+                    txtCep.Text = cliente.Cep;
+                    txtEndereco.Text = cliente.Endereco;
+                    txtNumero.Text = cliente.Numero;
+                    txtComplemento.Text = cliente.Complemento;
+                    txtBairro.Text = cliente.Bairro;
+                    txtCidade.Text = cliente.Cidade;
+                    cbUf.Text = cliente.Estado;
                 }
                 else
                 {

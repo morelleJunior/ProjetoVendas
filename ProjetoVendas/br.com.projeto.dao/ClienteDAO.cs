@@ -1,4 +1,5 @@
-﻿using ProjetoVendas.br.com.projeto.conexao;
+﻿using Dapper;
+using ProjetoVendas.br.com.projeto.conexao;
 using ProjetoVendas.br.com.projeto.model;
 using System;
 using System.Collections.Generic;
@@ -31,31 +32,13 @@ namespace ProjetoVendas.br.com.projeto.dao
                     INSERT INTO [dbo].[CAD_clientes]
                     ([nome], [rg], [cpf], [email], [telefone], [celular], [cep], [endereco], [numero], [complemento], [bairro], [cidade], [estado])
                     VALUES
-                    (@nome, '', @cpf, @email, @telefone, @celular, @cep, @endereco, @numero, @complemento, @bairro, @cidade, @estado)";
-
-
-                SqlCommand executaSql = new SqlCommand(sql, conexao);
-
-                executaSql.Parameters.AddWithValue("@nome", obj.Nome);
-                executaSql.Parameters.AddWithValue("@cpf", obj.CpfCnpj);
-                executaSql.Parameters.AddWithValue("@email", obj.Email);
-                executaSql.Parameters.AddWithValue("@telefone", obj.Telefone);
-                executaSql.Parameters.AddWithValue("@celular", obj.Celular);
-                executaSql.Parameters.AddWithValue("@cep", obj.Cep);
-                executaSql.Parameters.AddWithValue("@endereco", obj.Endereco);
-                executaSql.Parameters.AddWithValue("@numero", obj.Numero);
-                executaSql.Parameters.AddWithValue("@complemento", obj.Complemento);
-                executaSql.Parameters.AddWithValue("@bairro", obj.Bairro);
-                executaSql.Parameters.AddWithValue("@cidade", obj.Cidade);
-                executaSql.Parameters.AddWithValue("@estado", obj.Estado);
-
+                    (@Nome, '', @CpfCnpj, @Email, @Telefone, @Celular, @Cep, @Endereco, @Numero, @Complemento, @Bairro, @Cidade, @Estado)";
 
                 conexao.Open();
-                executaSql.ExecuteNonQuery();
+                conexao.Execute(sql, obj);
+                conexao.Close();
 
                 MessageBox.Show("Cliente Cadastrado!");
-
-                conexao.Close();
             }
             catch (Exception erro)
             {
@@ -68,39 +51,28 @@ namespace ProjetoVendas.br.com.projeto.dao
 
         #region Listar Cliente
 
-        public DataTable ListarCliente()
+        public List<ClienteResumo> ListarCliente()
         {
             try
             {
-                DataTable tabelaCliente = new DataTable();
-
                 string sql = @"
                                 SELECT 
-                                    [id] AS 'Código',
-                                    [nome] AS 'Nome',
-                                    [cpf] AS 'CPF / CNPJ',
-                                    [telefone] AS 'Telefone',
-                                    [celular] AS 'Celular',
-                                    [endereco] + ', ' + CAST([numero] AS VARCHAR) AS 'Endereço',
-                                    [cidade] + ' - ' + [estado] AS 'Cidade'
+                                    id,
+                                    nome,
+                                    cpf AS CpfCnpj,
+                                    email,
+                                    telefone,
+                                    celular,
+                                    endereco + ', ' + CAST(numero AS VARCHAR) AS Endereco,
+                                    cidade + ' - ' + estado AS Cidade
                                 FROM 
                                     [dbo].[CAD_clientes];";
 
-                SqlCommand executaSql = new SqlCommand(sql, conexao);
-
                 conexao.Open();
-                executaSql.ExecuteNonQuery();
-
-                SqlDataAdapter da = new SqlDataAdapter(executaSql);
-
-                da.Fill(tabelaCliente);
-
+                var lista = conexao.Query<ClienteResumo>(sql).ToList();
                 conexao.Close();
 
-                return tabelaCliente;
-
-
-
+                return lista;
             }
             catch (Exception erro)
             {
@@ -113,38 +85,35 @@ namespace ProjetoVendas.br.com.projeto.dao
 
         #region ClienteId
 
-        public DataTable ClienteId(Cliente obj)
+        public Cliente ClienteId(int id)
         {
             try
             {
-                DataTable tabelaCliente = new DataTable();
-
                 string sql = @"
-                                SELECT
-                                    *
-                                FROM 
-                                    [dbo].[CAD_clientes]
+                                SELECT [id]
+                                      ,[nome]
+                                      ,[cpf] AS 'CpfCnpj'
+                                      ,[email]
+                                      ,[telefone]
+                                      ,[celular]
+                                      ,[cep]
+                                      ,[endereco]
+                                      ,[numero]
+                                      ,[complemento]
+                                      ,[bairro]
+                                      ,[cidade]
+                                      ,[estado]
+                                  FROM [dbo].[CAD_clientes]
                                 WHERE [id] = @Id;";
-
-                SqlCommand executaSql = new SqlCommand(sql, conexao);
-
-                executaSql.Parameters.AddWithValue("@id", obj.Id);
-
                 conexao.Open();
-                executaSql.ExecuteNonQuery();
-
-                SqlDataAdapter da = new SqlDataAdapter(executaSql);
-
-                da.Fill(tabelaCliente);
-
+                var cliente = conexao.QueryFirstOrDefault<Cliente>(sql, new { Id = id });
                 conexao.Close();
-
-                return tabelaCliente;
+                return cliente;
 
             }
             catch (Exception erro)
             {
-                MessageBox.Show("Erro ao Listar Clientes" + erro);
+                MessageBox.Show("Erro ao buscar cliente por ID: " + erro.Message);
                 return null;
             }
         }
@@ -161,47 +130,30 @@ namespace ProjetoVendas.br.com.projeto.dao
                 string sql = @"
                                 UPDATE [dbo].[CAD_clientes]
                                 SET 
-                                    [nome] = @nome,
+                                    [nome] = @Nome,
                                     [rg] = '', 
-                                    [cpf] = @cpf,
-                                    [email] = @email,
-                                    [telefone] = @telefone,
-                                    [celular] = @celular,
-                                    [cep] = @cep,
-                                    [endereco] = @endereco,
-                                    [numero] = @numero,
-                                    [complemento] = @complemento,
-                                    [bairro] = @bairro,
-                                    [cidade] = @cidade,
-                                    [estado] = @estado
+                                    [cpf] = @CpfCnpj,
+                                    [email] = @Email,
+                                    [telefone] = @Telefone,
+                                    [celular] = @Celular,
+                                    [cep] = @Cep,
+                                    [endereco] = @Endereco,
+                                    [numero] = @Numero,
+                                    [complemento] = @Complemento,
+                                    [bairro] = @Bairro,
+                                    [cidade] = @Cidade,
+                                    [estado] = @Estado
                                 WHERE 
                                     [id] = @id
                               ";
 
-                SqlCommand executaSql = new SqlCommand(sql, conexao);
-
-                executaSql.Parameters.AddWithValue("@id", obj.Id);
-                executaSql.Parameters.AddWithValue("@nome", obj.Nome);
-                executaSql.Parameters.AddWithValue("@cpf", obj.CpfCnpj);
-                executaSql.Parameters.AddWithValue("@email", obj.Email);
-                executaSql.Parameters.AddWithValue("@telefone", obj.Telefone);
-                executaSql.Parameters.AddWithValue("@celular", obj.Celular);
-                executaSql.Parameters.AddWithValue("@cep", obj.Cep);
-                executaSql.Parameters.AddWithValue("@endereco", obj.Endereco);
-                executaSql.Parameters.AddWithValue("@numero", obj.Numero);
-                executaSql.Parameters.AddWithValue("@complemento", obj.Complemento);
-                executaSql.Parameters.AddWithValue("@bairro", obj.Bairro);
-                executaSql.Parameters.AddWithValue("@cidade", obj.Cidade);
-                executaSql.Parameters.AddWithValue("@estado", obj.Estado);
-
-
 
                 conexao.Open();
-                executaSql.ExecuteNonQuery();
+                conexao.Execute(sql, obj);
+                conexao.Close();
 
                 MessageBox.Show("Cliente Alterado!");
 
-                conexao.Close();
             }
             catch (Exception erro)
             {
